@@ -1,16 +1,28 @@
-import { Application, Request, Response } from "express"
-import { validateLogin } from "../validator/LoginValidator"
+import { Request, Response, Router } from "express"
+import { UserService } from "../service/UserService"
+import { validateLogin } from "../validator/validateLogin"
+import {
+    ReasonPhrases,
+    StatusCodes,
+} from 'http-status-codes';
+import { userMapper } from "./userMapper";
 
-export const LoginController = (app: Application) => {
+export const LoginController = (router: Router) => {
     const name = "UserController"
     console.log(`Initiated ${name}`)
 
-    app.post("/v1/user/login",
+    router.post("/v1/user/login",
         validateLogin,
-        async (req: Request, res: Response): Promise<Response> => {
-            console.log("request", req)
-            return res.status(200).send({
-                message: "You are logged in!",
-            })
+        async ({ body }: Request, res: Response): Promise<Response> => {
+            try {
+                const user = UserService.login(body)
+                if (!user) {
+                    return res.status(StatusCodes.FORBIDDEN).send(ReasonPhrases.FORBIDDEN)
+                }
+                const userDto = userMapper.toDto(user)
+                return res.status(StatusCodes.OK).send(userDto)
+            } catch (error) {
+                return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(ReasonPhrases.INTERNAL_SERVER_ERROR)
+            }
         })
 }

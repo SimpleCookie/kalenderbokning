@@ -1,8 +1,16 @@
-import { User } from "./UserInterface"
+import { User, UserCrendentials } from "../interface/UserInterface"
 
-export const UserService = () => {
+export class UserService {
 
-  const getUsers = (): User[] => {
-    return []
+  static getUsers(): User[] {
+    throw new Error("Method not implemented.")
+  }
+
+  static getUser(id: string): User | undefined {
+    throw new Error("Method not implemented.")
+  }
+
+  static login(userCredentials: UserCrendentials): User | undefined {
+    throw new Error("Method not implemented.")
   }
 }

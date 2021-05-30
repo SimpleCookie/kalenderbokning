@@ -5,3 +5,7 @@ export interface User {
   lastName: string
   admin: boolean
 }
+export interface UserCrendentials {
+  email: string
+  password: string
+}

@@ -1,10 +1,10 @@
 
 // Ping
-GET api/v1/ping
+GET http://localhost:3003/api/v1/ping
 
 // User controller
 // POST api/v1/user/login
-POST api/v1/user/login
+POST http://localhost:3003/api/v1/user/login
 content-type: application/json
 {
     "email": "simply@devgroup.se",
@@ -13,7 +13,7 @@ content-type: application/json
 
 // Reservation controller
 // POST api/v1/reservations/{entity}
-POST api/v1/reservations/lastbil1
+POST http://localhost:3003/api/v1/reservations/lastbil1
 content-type: application/json
 {
   "userId": "8e4b38fe-37c3-4f55-819b-fc55aee3de50",
@@ -24,10 +24,10 @@ content-type: application/json
 }
 
 // DELETE api/v1/reservations/{reservationID}
-DELETE api/v1/reservations/955030c4-92d2-4e6a-80c1-e3faaf82c351
+DELETE http://localhost:3003/api/v1/reservations/955030c4-92d2-4e6a-80c1-e3faaf82c351
 
 // GET api/v1/reservations?entity={entity}
-GET api/v1/reservations?entity=lastbil1
+GET http://localhost:3003/api/v1/reservations?entity=lastbil1
 
 // GET api/v1/reservations?available_at={date}
-GET api/v1/reservations?available_at=2021-06-12
+GET http://localhost:3003/api/v1/reservations?available_at=2021-06-12

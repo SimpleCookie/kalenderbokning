@@ -1,6 +1,6 @@
-import { Application } from "express"
+import { Router } from "express"
 import { LoginController } from "./controller/LoginController"
 
-export const useUserControllers = (app: Application) => {
-  LoginController(app)
+export const useUserControllers = (router: Router) => {
+  LoginController(router)
 }
