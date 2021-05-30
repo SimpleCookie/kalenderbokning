@@ -1,0 +1,33 @@
+
+// Ping
+GET api/v1/ping
+
+// User controller
+// POST api/v1/user/login
+POST api/v1/user/login
+content-type: application/json
+{
+    "email": "simply@devgroup.se",
+    "password": "foobar"
+}
+
+// Reservation controller
+// POST api/v1/reservations/{entity}
+POST api/v1/reservations/lastbil1
+content-type: application/json
+{
+  "userId": "8e4b38fe-37c3-4f55-819b-fc55aee3de50",
+  "timeInterval": {
+      "startTime": "2021-05-30T00:10:01.000Z",
+      "startEnd": "2021-05-30T00:13:01.000Z"
+  }
+}
+
+// DELETE api/v1/reservations/{reservationID}
+DELETE api/v1/reservations/955030c4-92d2-4e6a-80c1-e3faaf82c351
+
+// GET api/v1/reservations?entity={entity}
+GET api/v1/reservations?entity=lastbil1
+
+// GET api/v1/reservations?available_at={date}
+GET api/v1/reservations?available_at=2021-06-12
