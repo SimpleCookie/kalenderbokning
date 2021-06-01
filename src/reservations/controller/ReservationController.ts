@@ -7,12 +7,13 @@ import { reservationMapper } from "./reservationMapper";
 import { ReservationService } from "../service/ReservationService";
 import { validateReservationRequest } from "../validator/validateReservationRequest";
 import { validateIsAuthenticated } from "../../users/validator/validateIsAuthenticated";
+import { endpoint } from "../../endpoint";
 
 export const ReservationController = (router: Router) => {
     const name = "ReservationController"
     console.log(`Initiated ${name}`)
 
-    router.post("/v1/reservations",
+    router.post(endpoint.reservations,
         validateIsAuthenticated,
         validateReservationRequest,
         async ({ body }: Request, res: Response): Promise<Response> => {

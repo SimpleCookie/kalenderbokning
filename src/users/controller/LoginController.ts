@@ -6,12 +6,13 @@ import {
     StatusCodes,
 } from 'http-status-codes';
 import { userMapper } from "./userMapper";
+import { endpoint } from "../../endpoint";
 
 export const LoginController = (router: Router) => {
     const name = "UserController"
     console.log(`Initiated ${name}`)
 
-    router.post("/v1/user/login",
+    router.post(endpoint.login,
         validateLogin,
         async ({ body }: Request, res: Response): Promise<Response> => {
             try {
