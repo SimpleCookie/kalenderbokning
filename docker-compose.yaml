@@ -1,0 +1,10 @@
+version: '2.0'
+
+services:
+  backend:
+    build: .
+    working_dir: /chocolate/app
+    user: root
+    command: bash -c "yarn && yarn test"
+    volumes:
+      - ./:/chocolate/app
