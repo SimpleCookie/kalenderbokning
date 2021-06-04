@@ -1,17 +1,15 @@
-import { Request, Response, Router } from "express"
+import { Request, Response, Router } from "express";
 import {
     ReasonPhrases,
-    StatusCodes,
+    StatusCodes
 } from 'http-status-codes';
-import { reservationMapper } from "./reservationMapper";
+import { endpoint } from "../../endpoint";
+import { validateIsAuthenticated } from "../../users/validator/validateIsAuthenticated";
 import { ReservationService } from "../service/ReservationService";
 import { validateReservationRequest } from "../validator/validateReservationRequest";
-import { validateIsAuthenticated } from "../../users/validator/validateIsAuthenticated";
-import { endpoint } from "../../endpoint";
+import { reservationMapper } from "./reservationMapper";
 
 export const ReservationController = (router: Router) => {
-    const name = "ReservationController"
-    console.log(`Initiated ${name}`)
 
     router.post(endpoint.reservations,
         validateIsAuthenticated,
@@ -25,6 +23,7 @@ export const ReservationController = (router: Router) => {
                 const reservationDto = reservationMapper.toDto(reservation)
                 return res.status(StatusCodes.OK).send(reservationDto)
             } catch (error) {
+                console.error(error)
                 return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(ReasonPhrases.INTERNAL_SERVER_ERROR)
             }
         })

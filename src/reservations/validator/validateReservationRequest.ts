@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from "express"
 import Ajv, { JSONSchemaType } from "ajv"
+import { NextFunction, Request, Response } from "express"
 import { ReservationRequestDto } from "../interface/ReservationInterfaceDto"
 
 const schema: JSONSchemaType<ReservationRequestDto> = {
@@ -28,6 +28,7 @@ export const validateReservationRequest = ({ body }: Request, res: Response, nex
 
   if (!validate(body)) {
     res.status(403).send({ error: `Invalid user credentials` });
+    console.error("Bad request")
     return
   }
   next();

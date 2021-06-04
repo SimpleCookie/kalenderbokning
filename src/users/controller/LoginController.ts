@@ -1,16 +1,14 @@
-import { Request, Response, Router } from "express"
-import { UserService } from "../service/UserService"
-import { validateLogin } from "../validator/validateLogin"
+import { Request, Response, Router } from "express";
 import {
     ReasonPhrases,
-    StatusCodes,
+    StatusCodes
 } from 'http-status-codes';
-import { userMapper } from "./userMapper";
 import { endpoint } from "../../endpoint";
+import { UserService } from "../service/UserService";
+import { validateLogin } from "../validator/validateLogin";
+import { userMapper } from "./userMapper";
 
 export const LoginController = (router: Router) => {
-    const name = "UserController"
-    console.log(`Initiated ${name}`)
 
     router.post(endpoint.login,
         validateLogin,
