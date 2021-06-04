@@ -1,6 +1,6 @@
+import chai, { expect } from "chai";
+import chaiHttp from "chai-http";
 import { StatusCodes } from "http-status-codes";
-import chai, { expect } from "chai"
-import chaiHttp from "chai-http"
 import { server } from "../src/app";
 import { endpoint } from "../src/endpoint";
 
