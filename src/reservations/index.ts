@@ -1,6 +1,6 @@
 import { Router } from "express"
-import { ReservationController } from "./controller/ReservationController"
+import { CreateReservationController } from "./controllers/CreateReservation/CreateReservationController"
 
 export const useReservationControllers = (router: Router) => {
-  ReservationController(router)
+  CreateReservationController(router)
 }

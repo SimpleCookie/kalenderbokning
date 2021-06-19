@@ -1,7 +1,7 @@
-import { Reservation } from "../interface/ReservationInterface";
-import { ReservationDto } from "../interface/ReservationInterfaceDto";
+import { Reservation } from "../../interface/ReservationInterface";
+import { ReservationDto } from "../../interface/ReservationInterfaceDto";
 
-export const reservationMapper = {
+export const createReservationMapper = {
   toDto: (reservation: Reservation): ReservationDto => {
     try {
       return ({

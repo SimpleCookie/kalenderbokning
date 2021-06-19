@@ -1,11 +1,11 @@
 import { StatusCodes } from "http-status-codes"
 import supertest from "supertest"
-import { app } from "../app"
-import { endpoint } from "../endpoint"
-import { ReservationRequestDto } from "../reservations/interface/ReservationInterfaceDto"
-import { validateIsAuthenticated } from "../users/validator/validateIsAuthenticated"
+import { app } from "../../../../app"
+import { endpoint } from "../../../../endpoint"
+import { validateIsAuthenticated } from "../../../../users/validator/validateIsAuthenticated"
+import { ReservationRequestDto } from "../../../interface/ReservationInterfaceDto"
 
-jest.mock("../users/validator/validateIsAuthenticated")
+jest.mock("../../../../users/validator/validateIsAuthenticated")
 const mockValidateIsAuthenticated = validateIsAuthenticated as jest.Mock
 
 

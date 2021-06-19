@@ -3,13 +3,13 @@ import {
     ReasonPhrases,
     StatusCodes
 } from 'http-status-codes';
-import { endpoint } from "../../endpoint";
-import { validateIsAuthenticated } from "../../users/validator/validateIsAuthenticated";
-import { ReservationService } from "../service/ReservationService";
-import { validateReservationRequest } from "../validator/validateReservationRequest";
-import { reservationMapper } from "./reservationMapper";
+import { endpoint } from "../../../endpoint";
+import { validateIsAuthenticated } from "../../../users/validator/validateIsAuthenticated";
+import { ReservationService } from "../../service/ReservationService";
+import { validateReservationRequest } from "../../validator/validateReservationRequest";
+import { createReservationMapper } from "./CreateReservationMapper";
 
-export const ReservationController = (router: Router) => {
+export const CreateReservationController = (router: Router) => {
 
     router.post(endpoint.reservations,
         validateIsAuthenticated,
@@ -20,7 +20,7 @@ export const ReservationController = (router: Router) => {
                 if (!reservation) {
                     return res.status(StatusCodes.FORBIDDEN).send(ReasonPhrases.FORBIDDEN)
                 }
-                const reservationDto = reservationMapper.toDto(reservation)
+                const reservationDto = createReservationMapper.toDto(reservation)
                 return res.status(StatusCodes.OK).send(reservationDto)
             } catch (error) {
                 console.error(error)
