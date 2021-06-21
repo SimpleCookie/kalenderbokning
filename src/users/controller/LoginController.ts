@@ -1,11 +1,11 @@
+import { endpoint } from "@api/endpoint";
+import { UserService } from "@api/users/service/UserService";
+import { validateLogin } from "@api/users/validator/validateLogin";
 import { Request, Response, Router } from "express";
 import {
     ReasonPhrases,
     StatusCodes
 } from 'http-status-codes';
-import { endpoint } from "../../endpoint";
-import { UserService } from "../service/UserService";
-import { validateLogin } from "../validator/validateLogin";
 import { userMapper } from "./userMapper";
 
 export const LoginController = (router: Router) => {

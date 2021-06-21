@@ -1,7 +1,7 @@
+import { app } from "@api/app";
+import { endpoint } from "@api/endpoint";
 import { StatusCodes } from "http-status-codes";
 import supertest from "supertest";
-import { app } from "../app";
-import { endpoint } from "../endpoint";
 
 describe("Pinging the system", () => {
   it("Should return status 200 OK", async () => {

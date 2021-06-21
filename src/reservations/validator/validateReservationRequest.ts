@@ -1,6 +1,6 @@
+import { ReservationRequestDto } from "@api/reservations/interface/ReservationInterfaceDto"
 import Ajv, { JSONSchemaType } from "ajv"
 import { NextFunction, Request, Response } from "express"
-import { ReservationRequestDto } from "../interface/ReservationInterfaceDto"
 
 const schema: JSONSchemaType<ReservationRequestDto> = {
   type: "object",

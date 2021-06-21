@@ -1,13 +1,13 @@
+import { endpoint } from "@api/endpoint";
+import { createReservationMapper } from "@api/reservations/controllers/CreateReservation/CreateReservationMapper";
+import { ReservationService } from "@api/reservations/service/ReservationService";
+import { validateReservationRequest } from "@api/reservations/validator/validateReservationRequest";
+import { validateIsAuthenticated } from "@api/users/validator/validateIsAuthenticated";
 import { Request, Response, Router } from "express";
 import {
     ReasonPhrases,
     StatusCodes
 } from 'http-status-codes';
-import { endpoint } from "../../../endpoint";
-import { validateIsAuthenticated } from "../../../users/validator/validateIsAuthenticated";
-import { ReservationService } from "../../service/ReservationService";
-import { validateReservationRequest } from "../../validator/validateReservationRequest";
-import { createReservationMapper } from "./CreateReservationMapper";
 
 export const CreateReservationController = (router: Router) => {
 
