@@ -1,5 +1,5 @@
-import { User } from "../interface/UserInterface";
-import { UserDto } from "../interface/UserInterfaceDto";
+import { User } from "@api/users/interface/UserInterface";
+import { UserDto } from "@api/users/interface/UserInterfaceDto";
 
 export const userMapper = {
   toDto: (user: User): UserDto => {

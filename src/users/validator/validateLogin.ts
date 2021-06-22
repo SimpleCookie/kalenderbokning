@@ -1,7 +1,7 @@
-import { NextFunction, Request, Response } from "express"
+import { LoginRequestDto } from "@api/users/interface/UserInterfaceDto"
 import Ajv, { JSONSchemaType } from "ajv"
+import { NextFunction, Request, Response } from "express"
 import { ReasonPhrases, StatusCodes } from "http-status-codes"
-import { LoginRequestDto } from "../interface/UserInterfaceDto"
 
 const schema: JSONSchemaType<LoginRequestDto> = {
   type: "object",

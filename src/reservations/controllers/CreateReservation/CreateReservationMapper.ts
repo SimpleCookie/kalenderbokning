@@ -1,5 +1,5 @@
-import { Reservation } from "../../interface/ReservationInterface";
-import { ReservationDto } from "../../interface/ReservationInterfaceDto";
+import { Reservation } from "@api/reservations/interface/ReservationInterface";
+import { ReservationDto } from "@api/reservations/interface/ReservationInterfaceDto";
 
 export const createReservationMapper = {
   toDto: (reservation: Reservation): ReservationDto => {
