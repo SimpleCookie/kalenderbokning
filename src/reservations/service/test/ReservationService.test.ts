@@ -2,7 +2,7 @@ import { ReservationRequestDto } from "@api/reservations/interface/ReservationIn
 import { ReservationService } from "@api/reservations/service/ReservationService";
 import { getDatabase } from "@api/storage/db";
 
-jest.mock("@api/users/validator/validateIsAuthenticated")
+jest.mock("@api/storage/db")
 const mockGetDatabase = getDatabase as jest.Mock
 
 describe("Reservations should change when", () => {
