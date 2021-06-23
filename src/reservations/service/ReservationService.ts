@@ -1,5 +1,7 @@
-import { Reservation } from "../interface/ReservationInterface"
-import { ReservationRequestDto } from "../interface/ReservationInterfaceDto"
+import { createReservationMapper } from "@api/reservations/controllers/CreateReservation/createReservationMapper";
+import { Reservation } from "@api/reservations/interface/ReservationInterface";
+import { ReservationRequestDto } from "@api/reservations/interface/ReservationInterfaceDto";
+import { getDatabase } from "@api/storage/db";
 
 interface ReservationFilters {
   date?: string
@@ -7,8 +9,19 @@ interface ReservationFilters {
 
 export class ReservationService {
 
-  static create(reservation: ReservationRequestDto): Reservation {
-    throw new Error("Method not implemented.")
+  static async create(reservationDto: ReservationRequestDto): Reservation {
+    try {
+
+      const reservation = createReservationMapper.fromDto(reservationDto)
+      const db = await getDatabase()
+
+      const reservations = db.collection('reservations')
+      await reservations.insertOne(reservation)
+      return reservation
+    } catch (error) {
+      console.error("Unable to insert new reservationDto in database")
+      throw error
+    }
   }
 
   static update(reservation: Reservation): Reservation | undefined {
