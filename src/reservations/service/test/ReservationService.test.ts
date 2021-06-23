@@ -13,6 +13,9 @@ describe("Reservations should change when", () => {
         collection: () => ({
           insertOne: () => {
             insertOneIsCalled++
+            return {
+              insertedId: 'test'
+            }
           }
         })
       }
@@ -28,6 +31,7 @@ describe("Reservations should change when", () => {
 
     const reservation = await ReservationService.create(reservationDto)
     expect(reservation.bookingInfo.bookedBy).toBe('Johnns')
+    expect(reservation.id).toBe('test')
     expect(insertOneIsCalled).toBe(1)
   })
 })

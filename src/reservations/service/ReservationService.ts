@@ -1,4 +1,3 @@
-import { createReservationMapper } from "@api/reservations/controllers/CreateReservation/CreateReservationMapper";
 import { Reservation } from "@api/reservations/interface/ReservationInterface";
 import { ReservationRequestDto } from "@api/reservations/interface/ReservationInterfaceDto";
 import { getDatabase } from "@api/storage/db";
@@ -11,13 +10,20 @@ export class ReservationService {
 
   static async create(reservationDto: ReservationRequestDto): Promise<Reservation> {
     try {
-
-      const reservation = createReservationMapper.fromDto(reservationDto)
+      const bookingInfo = reservationDto.bookingInfo
+      const type = 'reservation'
       const db = await getDatabase()
 
       const reservations = db.collection('reservations')
-      await reservations.insertOne(reservation)
-      return reservation
+      const reservation = await reservations.insertOne({
+        type,
+        bookingInfo
+      })
+      return {
+        id: reservation.insertedId,
+        type,
+        bookingInfo
+      }
     } catch (error) {
       console.error("Unable to insert new reservationDto in database")
       throw error
