@@ -1,4 +1,4 @@
-import { createReservationMapper } from "@api/reservations/controllers/CreateReservation/createReservationMapper";
+import { createReservationMapper } from "@api/reservations/controllers/CreateReservation/CreateReservationMapper";
 import { Reservation } from "@api/reservations/interface/ReservationInterface";
 import { ReservationRequestDto } from "@api/reservations/interface/ReservationInterfaceDto";
 import { getDatabase } from "@api/storage/db";
@@ -9,7 +9,7 @@ interface ReservationFilters {
 
 export class ReservationService {
 
-  static async create(reservationDto: ReservationRequestDto): Reservation {
+  static async create(reservationDto: ReservationRequestDto): Promise<Reservation> {
     try {
 
       const reservation = createReservationMapper.fromDto(reservationDto)

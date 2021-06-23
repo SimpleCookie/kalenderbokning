@@ -16,7 +16,7 @@ export const CreateReservationController = (router: Router) => {
         validateReservationRequest,
         async ({ body }: Request, res: Response): Promise<Response> => {
             try {
-                const reservation = ReservationService.create(body)
+                const reservation = await ReservationService.create(body)
                 if (!reservation) {
                     return res.status(StatusCodes.FORBIDDEN).send(ReasonPhrases.FORBIDDEN)
                 }

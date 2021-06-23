@@ -26,7 +26,7 @@ describe("Reservations should change when", () => {
       }
     }
 
-    const reservation = ReservationService.create(reservationDto)
+    const reservation = await ReservationService.create(reservationDto)
     expect(reservation.bookingInfo.bookedBy).toBe('Johnns')
     expect(insertOneIsCalled).toBe(1)
   })

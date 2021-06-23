@@ -18,7 +18,7 @@ describe("Reservations should accept", () => {
     mockValidateIsAuthenticated.mockImplementation((a, b, next) => {
       next()
     })
-    mockReservationService.mockImplementation(() => {
+    mockReservationService.mockImplementation(async () => {
       return body
     })
     const url = `/api${endpoint.reservations}`
