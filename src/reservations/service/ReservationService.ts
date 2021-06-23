@@ -13,17 +13,19 @@ export class ReservationService {
       const bookingInfo = reservationDto.bookingInfo
       const type = 'reservation'
       const db = await getDatabase()
-
-      const reservations = db.collection('reservations')
-      const reservation = await reservations.insertOne({
-        type,
-        bookingInfo
-      })
-      return {
-        id: reservation.insertedId,
-        type,
-        bookingInfo
+      if (db) {
+        const reservations = db.collection('reservations')
+        const reservation = await reservations.insertOne({
+          type,
+          bookingInfo
+        })
+        return {
+          id: reservation.insertedId,
+          type,
+          bookingInfo
+        }
       }
+      throw new Error("Unable to connect to database")
     } catch (error) {
       console.error("Unable to insert new reservationDto in database")
       throw error
