@@ -1,13 +1,13 @@
 import { Reservation } from "@api/reservations/interface/ReservationInterface";
-import { ReservationDto } from "@api/reservations/interface/ReservationInterfaceDto";
+import { ReservationDto, ResponseDto } from "@api/reservations/interface/ReservationInterfaceDto";
 
 export const createReservationMapper = {
-  toDto: (reservation: Reservation): ReservationDto => {
+  toDto: (reservation: Reservation): ResponseDto<ReservationDto> => {
     try {
       return ({
         type: "reservation",
         id: reservation.id,
-        bookingInfo: {
+        data: {
           entity: reservation.bookingInfo.entity,
           bookedBy: reservation.bookingInfo.bookedBy,
           starttime: reservation.bookingInfo.starttime,

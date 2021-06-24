@@ -1,11 +1,11 @@
-import { ReservationRequestDto } from "@api/reservations/interface/ReservationInterfaceDto"
+import { CreateRequestDto, ReservationDto } from "@api/reservations/interface/ReservationInterfaceDto"
 import Ajv, { JSONSchemaType } from "ajv"
 import { NextFunction, Request, Response } from "express"
 
-const schema: JSONSchemaType<ReservationRequestDto> = {
+const schema: JSONSchemaType<CreateRequestDto<ReservationDto>> = {
   type: "object",
   properties: {
-    bookingInfo: {
+    data: {
       type: "object",
       properties: {
         bookedBy: { type: "string", minLength: 4 },
@@ -18,7 +18,7 @@ const schema: JSONSchemaType<ReservationRequestDto> = {
     },
     password: { type: "string", minLength: 4 }
   },
-  required: ["bookingInfo"],
+  required: ["data"],
   additionalProperties: false,
 }
 

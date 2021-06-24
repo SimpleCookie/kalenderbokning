@@ -1,6 +1,6 @@
 import { app } from "@api/app"
 import { endpoint } from "@api/endpoint"
-import { ReservationRequestDto } from "@api/reservations/interface/ReservationInterfaceDto"
+import { CreateRequestDto, ReservationDto } from "@api/reservations/interface/ReservationInterfaceDto"
 import { ReservationService } from "@api/reservations/service/ReservationService"
 import { validateIsAuthenticated } from "@api/users/validator/validateIsAuthenticated"
 import { StatusCodes } from "http-status-codes"
@@ -22,8 +22,8 @@ describe("Reservations should accept", () => {
       return body
     })
     const url = `/api${endpoint.reservations}`
-    const body: ReservationRequestDto = {
-      bookingInfo: {
+    const body: CreateRequestDto<ReservationDto> = {
+      data: {
         bookedBy: "Johnns",
         entity: "Skola",
         starttime: new Date().toISOString(),
