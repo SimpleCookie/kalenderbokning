@@ -1,6 +1,6 @@
-import { Reservation } from "@api/reservations/interface/ReservationInterface";
-import { ReservationRequestDto } from "@api/reservations/interface/ReservationInterfaceDto";
+import { CreateReservation, Reservation } from "@api/reservations/interface/ReservationInterface";
 import { getDatabase } from "@api/storage/db";
+import { v4 as uuidv4 } from "uuid";
 
 interface ReservationFilters {
   date?: string
@@ -8,22 +8,21 @@ interface ReservationFilters {
 
 export class ReservationService {
 
-  static async create(reservationDto: ReservationRequestDto): Promise<Reservation> {
+  static async create(creation: CreateReservation): Promise<Reservation> {
     try {
-      const bookingInfo = reservationDto.bookingInfo
-      const type = 'reservation'
       const db = await getDatabase()
       if (db) {
         const reservations = db.collection('reservations')
-        const reservation = await reservations.insertOne({
-          type,
-          bookingInfo
-        })
-        return {
-          id: reservation.insertedId,
-          type,
-          bookingInfo
+        const newReservation: Reservation = {
+          id: uuidv4(),
+          type: "reservation",
+          bookedBy: creation.bookedBy,
+          starttime: creation.starttime,
+          endtime: creation.endtime,
+          entity: creation.entity,
         }
+        await reservations.insertOne(newReservation)
+        return newReservation
       }
       throw new Error("Unable to connect to database")
     } catch (error) {

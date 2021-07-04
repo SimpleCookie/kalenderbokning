@@ -1,16 +1,13 @@
-export interface CreateRequestDto<T> {
-  data: T
+export interface CreateReservationDto {
+  bookedBy: string
+  entity: string
+  starttime: string
+  endtime: string
 }
-export interface UpdateRequestDto<T> {
-  id: string
-  data: T
-}
-export interface ResponseDto<T> {
-  id: string
-  type: "user" | "reservation"
-  data: T
-}
+
 export interface ReservationDto {
+  type: "reservation"
+  id: string
   bookedBy: string
   entity: string
   starttime: string

@@ -10,7 +10,8 @@
     "express": "4.17.1",
     "helmet": "4.6.0",
     "http-status-codes": "2.1.4",
-    "mongodb": "3.6.8"
+    "mongodb": "3.6.8",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/cors": "2.8.10",
@@ -21,6 +22,7 @@
     "@types/mongodb": "3.6.18",
     "@types/node": "15.6.1",
     "@types/supertest": "2.0.11",
+    "@types/uuid": "^8.3.1",
     "eslint": "7.27.0",
     "jest": "27.0.4",
     "supertest": "6.1.3",

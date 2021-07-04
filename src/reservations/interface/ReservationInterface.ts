@@ -6,3 +6,10 @@ export interface Reservation {
   starttime: string
   endtime: string
 }
+export interface CreateReservation {
+  type: "create_reservation"
+  bookedBy: string
+  entity: string
+  starttime: string
+  endtime: string
+}
