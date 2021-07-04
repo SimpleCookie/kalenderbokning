@@ -6,9 +6,9 @@ interface ReservationFilters {
   date?: string
 }
 
-export class ReservationService {
+export const reservationService = {
 
-  static async create(creation: CreateReservation): Promise<Reservation> {
+  create: async (creation: CreateReservation): Promise<Reservation> => {
     try {
       const db = await getDatabase()
       if (db) {
@@ -29,22 +29,22 @@ export class ReservationService {
       console.error("Unable to insert new reservationDto in database")
       throw error
     }
-  }
+  },
 
-  static update(reservation: Reservation): Reservation | undefined {
+  update: (reservation: Reservation): Reservation | undefined => {
     throw new Error("Method not implemented.")
-  }
+  },
 
-  static getById(id: string): Reservation | undefined {
+  getById: (id: string): Reservation | undefined => {
     throw new Error("Method not implemented.")
-  }
+  },
 
-  static list(filters: ReservationFilters): Reservation[] {
+  list: (filters: ReservationFilters): Reservation[] => {
     console.log(filters)
     throw new Error("Method not implemented.")
-  }
+  },
 
-  static listByUserId(userId: string): Reservation[] {
+  listByUserId: (userId: string): Reservation[] => {
     throw new Error("Method not implemented.")
-  }
+  },
 }

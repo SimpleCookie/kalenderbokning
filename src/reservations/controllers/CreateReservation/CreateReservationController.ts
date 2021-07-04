@@ -1,6 +1,6 @@
 import { endpoint } from "@api/endpoint";
 import { createReservationMapper } from "@api/reservations/controllers/CreateReservation/CreateReservationMapper";
-import { ReservationService } from "@api/reservations/service/ReservationService";
+import { reservationService } from "@api/reservations/service/reservationService";
 import { validateReservationRequest } from "@api/reservations/validator/validateReservationRequest";
 import { validateIsAuthenticated } from "@api/users/validator/validateIsAuthenticated";
 import { Request, Response, Router } from "express";
@@ -16,7 +16,7 @@ export const CreateReservationController = (router: Router) => {
         validateReservationRequest,
         async ({ body }: Request, res: Response): Promise<Response> => {
             try {
-                const reservation = await ReservationService.create(body)
+                const reservation = await reservationService.create(body)
                 if (!reservation) {
                     return res.status(StatusCodes.FORBIDDEN).send(ReasonPhrases.FORBIDDEN)
                 }

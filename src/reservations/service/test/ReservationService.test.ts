@@ -1,6 +1,7 @@
-import { ReservationRequestDto } from "@api/reservations/interface/ReservationInterfaceDto";
-import { ReservationService } from "@api/reservations/service/ReservationService";
+import { CreateReservation } from "@api/reservations/interface/ReservationInterface";
+import { reservationService } from "@api/reservations/service/reservationService";
 import { getDatabase } from "@api/storage/db";
+import dayjs from "dayjs";
 
 jest.mock("@api/storage/db")
 const mockGetDatabase = getDatabase as jest.Mock
@@ -20,18 +21,16 @@ describe("Reservations should change when", () => {
         })
       }
     })
-    const reservationDto: ReservationRequestDto = {
-      bookingInfo: {
-        bookedBy: "Johnns",
-        entity: "Skola",
-        starttime: new Date().toISOString(),
-        endtime: new Date().toISOString(),
-      }
+    const reservationDto: CreateReservation = {
+      type: "create_reservation",
+      bookedBy: "Johnns",
+      entity: "Skola",
+      starttime: dayjs("2021-06-06").toISOString(),
+      endtime: dayjs("2021-06-06").toISOString(),
     }
 
-    const reservation = await ReservationService.create(reservationDto)
-    expect(reservation.bookingInfo.bookedBy).toBe('Johnns')
-    expect(reservation.id).toBe('test')
-    expect(insertOneIsCalled).toBe(1)
+    const reservation = await reservationService.create(reservationDto)
+    expect(reservation).toMatchObject({ bookedBy: "Johanns", id: "test" })
+    expect(insertOneIsCalled).toStrictEqual(1)
   })
 })
