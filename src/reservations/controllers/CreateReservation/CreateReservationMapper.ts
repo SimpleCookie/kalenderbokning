@@ -17,7 +17,7 @@ export const createReservationMapper = {
       throw error
     }
   },
-  toCreation: (reservation: CreateReservationDto): CreateReservation => {
+  fromCreationDto: (reservation: CreateReservationDto): CreateReservation => {
     try {
       return ({
         type: "create_reservation",

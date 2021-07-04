@@ -16,7 +16,8 @@ export const CreateReservationController = (router: Router) => {
         validateReservationRequest,
         async ({ body }: Request, res: Response): Promise<Response> => {
             try {
-                const reservation = await reservationService.create(body)
+                const request = createReservationMapper.fromCreationDto(body)
+                const reservation = await reservationService.create(request)
                 if (!reservation) {
                     return res.status(StatusCodes.FORBIDDEN).send(ReasonPhrases.FORBIDDEN)
                 }
