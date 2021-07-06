@@ -7,6 +7,6 @@ export interface UserDto {
 }
 
 export interface LoginRequestDto {
-  email: string
-  password: string
+  email?: string
+  password?: string
 }

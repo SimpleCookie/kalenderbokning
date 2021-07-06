@@ -1,8 +1,8 @@
 export interface CreateReservationDto {
-  bookedBy: string
-  entity: string
-  starttime: string
-  endtime: string
+  bookedBy?: string
+  entity?: string
+  starttime?: string
+  endtime?: string
 }
 
 export interface ReservationDto {

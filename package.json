@@ -1,11 +1,14 @@
 {
   "scripts": {
     "start": "ts-node-dev ./src/index.ts",
-    "watch-test": "jest --watch",
-    "test": "jest"
+    "test": "jest --watch"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>src/setupTests.ts"
   },
   "dependencies": {
-    "ajv": "8.5.0",
+    "@types/cookie-parser": "^1.4.2",
+    "cookie-parser": "^1.4.5",
     "cors": "2.8.5",
     "dayjs": "^1.10.5",
     "express": "4.17.1",

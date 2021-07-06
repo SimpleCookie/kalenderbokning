@@ -1,3 +1,4 @@
+import cookieParser from "cookie-parser"
 import cors from "cors"
 import express, { Application } from "express"
 import helmet from "helmet"
@@ -11,6 +12,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 app.use(helmet())
+app.use(cookieParser())
 app.use(baseUrl, router)
 
 

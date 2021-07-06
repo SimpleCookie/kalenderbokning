@@ -3,7 +3,6 @@ import { reservationService } from "@api/reservations/service/reservationService
 import { getDatabase } from "@api/storage/db";
 import dayjs from "dayjs";
 
-jest.mock("@api/storage/db")
 const mockGetDatabase = getDatabase as jest.Mock
 
 describe("Reservations should change when", () => {
@@ -30,7 +29,7 @@ describe("Reservations should change when", () => {
     }
 
     const reservation = await reservationService.create(reservationDto)
-    expect(reservation).toMatchObject({ bookedBy: "Johanns", id: "test" })
+    expect(reservation).toStrictEqual(expect.objectContaining({ bookedBy: "Johanns", id: "test" }))
     expect(insertOneIsCalled).toStrictEqual(1)
   })
 })

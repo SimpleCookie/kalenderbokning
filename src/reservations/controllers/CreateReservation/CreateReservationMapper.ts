@@ -19,15 +19,25 @@ export const createReservationMapper = {
   },
   fromCreationDto: (reservation: NewReservationDto): NewReservation => {
     try {
+      const {
+        entity,
+        bookedBy,
+        starttime,
+        endtime,
+      } = reservation
+
+      if (!entity || !bookedBy || !starttime || !endtime) {
+        throw new Error("Invalid newReservationDto")
+      }
       return ({
         type: "new_reservation",
-        entity: reservation.entity,
-        bookedBy: reservation.bookedBy,
-        starttime: reservation.starttime,
-        endtime: reservation.endtime,
+        entity,
+        bookedBy,
+        starttime,
+        endtime,
       });
     } catch (error) {
-      console.error("Fail to map reservation from dto", reservation)
+      console.error(error)
       throw error
     }
   }

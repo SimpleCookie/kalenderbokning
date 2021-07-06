@@ -1,7 +1,7 @@
 import { endpoint } from "@api/endpoint";
 import { createReservationMapper } from "@api/reservations/controllers/CreateReservation/CreateReservationMapper";
 import { reservationService } from "@api/reservations/service/reservationService";
-import { validateReservationRequest } from "@api/reservations/validator/validateReservationRequest";
+import { validateNewReservation } from "@api/reservations/validator/validateReservationRequest";
 import { validateIsAuthenticated } from "@api/users/validator/validateIsAuthenticated";
 import { Request, Response, Router } from "express";
 import {
@@ -13,7 +13,7 @@ export const CreateReservationController = (router: Router) => {
 
     router.post(endpoint.reservations,
         validateIsAuthenticated,
-        validateReservationRequest,
+        validateNewReservation,
         async ({ body }: Request, res: Response): Promise<Response> => {
             try {
                 const request = createReservationMapper.fromCreationDto(body)
