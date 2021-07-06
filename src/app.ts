@@ -3,6 +3,10 @@ import cors from "cors"
 import express, { Application } from "express"
 import helmet from "helmet"
 import { router } from "./routes"
+/**
+ * Todo: Use express-session instead of cookie-parser?
+ * https://www.npmjs.com/package/express-session
+ */
 
 const baseUrl = "/api"
 
