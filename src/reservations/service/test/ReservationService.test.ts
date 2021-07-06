@@ -1,4 +1,4 @@
-import { CreateReservation } from "@api/reservations/interface/ReservationInterface";
+import { NewReservation } from "@api/reservations/interface/ReservationInterface";
 import { reservationService } from "@api/reservations/service/reservationService";
 import { getDatabase } from "@api/storage/db";
 import dayjs from "dayjs";
@@ -21,8 +21,8 @@ describe("Reservations should change when", () => {
         })
       }
     })
-    const reservationDto: CreateReservation = {
-      type: "create_reservation",
+    const reservationDto: NewReservation = {
+      type: "new_reservation",
       bookedBy: "Johnns",
       entity: "Skola",
       starttime: dayjs("2021-06-06").toISOString(),

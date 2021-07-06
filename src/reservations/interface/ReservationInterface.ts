@@ -1,13 +1,13 @@
 export interface Reservation {
   type: "reservation"
-  id: string
+  _id: string
   bookedBy: string
   entity: string
   starttime: string
   endtime: string
 }
-export interface CreateReservation {
-  type: "create_reservation"
+export interface NewReservation {
+  type: "new_reservation"
   bookedBy: string
   entity: string
   starttime: string

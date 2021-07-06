@@ -1,32 +1,32 @@
-import { CreateReservation, Reservation } from "@api/reservations/interface/ReservationInterface";
+import { NewReservation, Reservation } from "@api/reservations/interface/ReservationInterface";
 import { getDatabase } from "@api/storage/db";
 import { v4 as uuidv4 } from "uuid";
 
-interface ReservationFilters {
+interface ReservationFilter {
   date?: string
 }
-
+const collection = "kb_reservations"
 export const reservationService = {
 
-  create: async (creation: CreateReservation): Promise<Reservation> => {
+  create: async (creation: NewReservation): Promise<Reservation> => {
     try {
       const db = await getDatabase()
-      if (db) {
-        const reservations = db.collection('reservations')
-        const newReservation: Reservation = {
-          id: uuidv4(),
-          type: "reservation",
-          bookedBy: creation.bookedBy,
-          starttime: creation.starttime,
-          endtime: creation.endtime,
-          entity: creation.entity,
-        }
-        await reservations.insertOne(newReservation)
-        return newReservation
+      if (!db) {
+        throw new Error("Unable to connect to database")
       }
-      throw new Error("Unable to connect to database")
+      const reservations = db.collection(collection)
+      const newReservation: Reservation = {
+        _id: uuidv4(),
+        type: "reservation",
+        bookedBy: creation.bookedBy,
+        starttime: creation.starttime,
+        endtime: creation.endtime,
+        entity: creation.entity,
+      }
+      await reservations.insertOne(newReservation)
+      return newReservation
     } catch (error) {
-      console.error("Unable to insert new reservationDto in database")
+      console.error(error)
       throw error
     }
   },
@@ -39,7 +39,7 @@ export const reservationService = {
     throw new Error("Method not implemented.")
   },
 
-  list: (filters: ReservationFilters): Reservation[] => {
+  list: (filters: ReservationFilter): Reservation[] => {
     console.log(filters)
     throw new Error("Method not implemented.")
   },
