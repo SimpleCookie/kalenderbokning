@@ -1,5 +1,5 @@
-import { NewReservation, Reservation } from "@api/reservations/interface/ReservationInterface";
-import { NewReservationDto, ReservationDto } from "@api/reservations/interface/ReservationInterfaceDto";
+import { NewReservation, Reservation } from "@src/reservations/interface/ReservationInterface";
+import { NewReservationDto, ReservationDto } from "@src/reservations/interface/ReservationInterfaceDto";
 import dayjs from "dayjs";
 import { v4 as uuidv4 } from "uuid";
 

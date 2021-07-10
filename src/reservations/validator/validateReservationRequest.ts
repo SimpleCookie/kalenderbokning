@@ -1,5 +1,5 @@
-import { getValidationMsg } from "@api/controllerUtilities"
-import { NewReservationDto } from "@api/reservations/interface/ReservationInterfaceDto"
+import { getValidationMsg } from "@src/controllerUtilities"
+import { NewReservationDto } from "@src/reservations/interface/ReservationInterfaceDto"
 import dayjs from "dayjs"
 import { NextFunction, Request, Response } from "express"
 import { StatusCodes } from "http-status-codes"

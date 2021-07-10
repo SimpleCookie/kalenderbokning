@@ -1,8 +1,8 @@
-import { endpoint } from "@api/endpoint";
-import { newReservationMapper } from "@api/reservations/controllers/CreateReservation/newReservationMapper";
-import { reservationService } from "@api/reservations/service/reservationService";
-import { validateNewReservation } from "@api/reservations/validator/validateReservationRequest";
-import { validateIsAuthenticated } from "@api/users/validator/validateIsAuthenticated";
+import { endpoint } from "@src/endpoint";
+import { newReservationMapper } from "@src/reservations/controllers/NewReservation/newReservationMapper";
+import { reservationService } from "@src/reservations/service/reservationService";
+import { validateNewReservation } from "@src/reservations/validator/validateReservationRequest";
+import { validateIsAuthenticated } from "@src/users/validator/validateIsAuthenticated";
 import { Request, Response, Router } from "express";
 import {
     ReasonPhrases,

@@ -1,25 +1,18 @@
-import { NewReservation } from "@api/reservations/interface/ReservationInterface";
-import { reservationService } from "@api/reservations/service/reservationService";
-import { getDatabase } from "@api/storage/db";
+import { NewReservation } from "@src/reservations/interface/ReservationInterface";
+import { reservationService } from "@src/reservations/service/reservationService";
 import dayjs from "dayjs";
 
-const mockGetDatabase = getDatabase as jest.Mock
+const mockInsert = jest.fn()
+jest.mock("@db", () => ({
+  getDatabase: () => ({
+    collection: () => ({
+      insertOne: mockInsert
+    })
+  })
+}))
 
 describe("Reservations should change when", () => {
   it("creates a new reservation", async () => {
-    let insertOneIsCalled = 0
-    mockGetDatabase.mockImplementation(() => {
-      return {
-        collection: () => ({
-          insertOne: () => {
-            insertOneIsCalled++
-            return {
-              insertedId: 'test'
-            }
-          }
-        })
-      }
-    })
     const reservationDto: NewReservation = {
       type: "new_reservation",
       bookedBy: "Johnns",
@@ -29,7 +22,17 @@ describe("Reservations should change when", () => {
     }
 
     const reservation = await reservationService.create(reservationDto)
-    expect(reservation).toStrictEqual(expect.objectContaining({ bookedBy: "Johanns", id: "test" }))
-    expect(insertOneIsCalled).toStrictEqual(1)
+
+    const expected = {
+      type: "reservation",
+      _id: "uuid-1",
+      bookedBy: reservationDto.bookedBy,
+      entity: reservationDto.entity,
+      starttime: reservationDto.starttime,
+      endtime: reservationDto.endtime,
+    }
+    expect(mockInsert).toBeCalledTimes(1)
+    expect(mockInsert).toHaveBeenCalledWith(expected)
+    expect(reservation).toStrictEqual(expected)
   })
 })

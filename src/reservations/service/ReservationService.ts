@@ -1,5 +1,5 @@
-import { NewReservation, Reservation } from "@api/reservations/interface/ReservationInterface";
-import { getDatabase } from "@api/storage/db";
+import { NewReservation, Reservation } from "@src/reservations/interface/ReservationInterface";
+import { getDatabase } from "@src/storage/db";
 import { v4 as uuidv4 } from "uuid";
 
 interface ReservationFilter {

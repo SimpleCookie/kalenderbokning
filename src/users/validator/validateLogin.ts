@@ -1,5 +1,5 @@
-import { emailRegExp, getValidationMsg } from "@api/controllerUtilities"
-import { LoginRequestDto } from "@api/users/interface/UserInterfaceDto"
+import { emailRegExp, getValidationMsg } from "@src/controllerUtilities"
+import { LoginRequestDto } from "@src/users/interface/UserInterfaceDto"
 import { NextFunction, Request, Response } from "express"
 import { ReasonPhrases, StatusCodes } from "http-status-codes"
 

@@ -1,6 +1,6 @@
-import { endpoint } from "@api/endpoint";
-import { UserService } from "@api/users/service/UserService";
-import { validateLogin } from "@api/users/validator/validateLogin";
+import { endpoint } from "@src/endpoint";
+import { UserService } from "@src/users/service/UserService";
+import { validateLogin } from "@src/users/validator/validateLogin";
 import { Request, Response, Router } from "express";
 import {
     ReasonPhrases,
