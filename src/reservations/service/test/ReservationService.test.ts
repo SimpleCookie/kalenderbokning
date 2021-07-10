@@ -11,8 +11,8 @@ jest.mock("@db", () => ({
   })
 }))
 
-describe("Reservations should change when", () => {
-  it("creates a new reservation", async () => {
+describe("Creating a new reservation should", () => {
+  it("save the entry to the database and return it", async () => {
     const reservationDto: NewReservation = {
       type: "new_reservation",
       bookedBy: "Johnns",

@@ -15,8 +15,8 @@ jest.mock("@db", () => ({
   })
 }))
 
-describe("Pinging the system", () => {
-  it("Should return status 200 OK", async () => {
+describe("Creating a new reservation", () => {
+  it("Should return the new reservation", async () => {
     const newReservation = reservationBuilder.dto.newReservation({
       starttime: dayjs().add(1, "day").toJSON(),
       endtime: dayjs().add(2, "day").toJSON(),
