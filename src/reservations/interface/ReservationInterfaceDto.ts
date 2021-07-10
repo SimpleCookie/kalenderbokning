@@ -1,4 +1,4 @@
-export interface CreateReservationDto {
+export interface NewReservationDto {
   bookedBy?: string
   entity?: string
   starttime?: string

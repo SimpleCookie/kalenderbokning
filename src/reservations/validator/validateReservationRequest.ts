@@ -1,11 +1,11 @@
 import { getValidationMsg } from "@api/controllerUtilities"
-import { CreateReservationDto } from "@api/reservations/interface/ReservationInterfaceDto"
+import { NewReservationDto } from "@api/reservations/interface/ReservationInterfaceDto"
 import dayjs from "dayjs"
 import { NextFunction, Request, Response } from "express"
 import { StatusCodes } from "http-status-codes"
 
 export const validateNewReservation = (request: Request, res: Response, next: NextFunction) => {
-  const body: CreateReservationDto = request.body
+  const body: NewReservationDto = request.body
 
   try {
     if (!body.bookedBy || body.bookedBy.length < 3) {

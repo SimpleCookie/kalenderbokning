@@ -1,8 +1,8 @@
 import { app } from "@api/app"
 import { endpoint } from "@api/endpoint"
 import { Reservation } from "@api/reservations/interface/ReservationInterface"
-import { CreateReservationDto } from "@api/reservations/interface/ReservationInterfaceDto"
 import { reservationService } from "@api/reservations/service/reservationService"
+import { reservationBuilder } from "@api/test/builders/reservationBuilder"
 import dayjs from "dayjs"
 import { StatusCodes } from "http-status-codes"
 import supertest from "supertest"
@@ -15,12 +15,10 @@ const testUrl = `/api${endpoint.reservations}`
 
 describe("Reservations should accept", () => {
   it("Post to create a new reservation", async () => {
-    const body: CreateReservationDto = {
-      bookedBy: "Johnns",
-      entity: "Skola",
-      starttime: dayjs().add(2, "day").toISOString(),
-      endtime: dayjs().add(3, "day").toISOString(),
-    }
+    const body = reservationBuilder.dto.newReservation({
+      starttime: dayjs().add(1, "day").toJSON(),
+      endtime: dayjs().add(2, "day").toJSON(),
+    })
     const newReservation: Reservation = {
       _id: uuidv4(),
       type: "reservation",
