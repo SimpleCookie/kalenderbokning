@@ -1,7 +1,7 @@
 import { NewReservation, Reservation } from "@api/reservations/interface/ReservationInterface";
 import { NewReservationDto as NewReservationDto, ReservationDto } from "@api/reservations/interface/ReservationInterfaceDto";
 
-export const createReservationMapper = {
+export const newReservationMapper = {
   toDto: (reservation: Reservation): ReservationDto => {
     try {
       return ({

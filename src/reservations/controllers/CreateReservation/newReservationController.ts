@@ -1,5 +1,5 @@
 import { endpoint } from "@api/endpoint";
-import { createReservationMapper } from "@api/reservations/controllers/CreateReservation/CreateReservationMapper";
+import { newReservationMapper } from "@api/reservations/controllers/CreateReservation/newReservationMapper";
 import { reservationService } from "@api/reservations/service/reservationService";
 import { validateNewReservation } from "@api/reservations/validator/validateReservationRequest";
 import { validateIsAuthenticated } from "@api/users/validator/validateIsAuthenticated";
@@ -9,16 +9,16 @@ import {
     StatusCodes
 } from 'http-status-codes';
 
-export const CreateReservationController = (router: Router) => {
+export const newReservationController = (router: Router) => {
 
     router.post(endpoint.reservations,
         validateIsAuthenticated,
         validateNewReservation,
         async ({ body }: Request, res: Response): Promise<Response> => {
             try {
-                const request = createReservationMapper.fromCreationDto(body)
+                const request = newReservationMapper.fromCreationDto(body)
                 const reservation = await reservationService.create(request)
-                const reservationDto = createReservationMapper.toDto(reservation)
+                const reservationDto = newReservationMapper.toDto(reservation)
                 return res.status(StatusCodes.OK).send(reservationDto)
             } catch (error) {
                 console.error(error)
