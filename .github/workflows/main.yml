@@ -31,5 +31,5 @@ jobs:
 
       - name: Install dependencies
         run: yarn
-      - name: Run tests with coverage
-        run: yarn test-coverage --maxWorkers=2
+      - name: Run tests once
+        run: yarn test-once

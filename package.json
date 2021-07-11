@@ -2,7 +2,7 @@
   "scripts": {
     "start": "ts-node-dev ./src/index.ts",
     "test": "jest --watch",
-    "test-coverage": "jest --coverage"
+    "test-once": "jest"
   },
   "dependencies": {
     "cookie-parser": "1.4.5",
