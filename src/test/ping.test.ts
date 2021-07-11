@@ -1,5 +1,5 @@
-import { app } from "@api/app";
-import { endpoint } from "@api/endpoint";
+import { app } from "@src/app";
+import { endpoint } from "@src/endpoint";
 import { StatusCodes } from "http-status-codes";
 import supertest from "supertest";
 

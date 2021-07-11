@@ -1,34 +1,30 @@
-import { ReservationRequestDto } from "@api/reservations/interface/ReservationInterfaceDto"
-import Ajv, { JSONSchemaType } from "ajv"
+import { getValidationMsg } from "@src/controllerUtilities"
+import { NewReservationDto } from "@src/reservations/interface/ReservationInterfaceDto"
+import dayjs from "dayjs"
 import { NextFunction, Request, Response } from "express"
+import { StatusCodes } from "http-status-codes"
 
-const schema: JSONSchemaType<ReservationRequestDto> = {
-  type: "object",
-  properties: {
-    bookingInfo: {
-      type: "object",
-      properties: {
-        bookedBy: { type: "string", minLength: 4 },
-        entity: { type: "string", minLength: 4 },
-        starttime: { type: "string", minLength: 24, maxLength: 24 },
-        endtime: { type: "string", minLength: 24, maxLength: 24 },
-      },
-      required: ["bookedBy", "entity", "starttime", "endtime"],
-      additionalProperties: false,
-    },
-    password: { type: "string", minLength: 4 }
-  },
-  required: ["bookingInfo"],
-  additionalProperties: false,
-}
+export const validateNewReservation = (request: Request, res: Response, next: NextFunction) => {
+  const body: NewReservationDto = request.body
 
-const ajv = new Ajv()
-export const validateReservationRequest = ({ body }: Request, res: Response, next: NextFunction) => {
-  const validate = ajv.compile(schema)
-
-  if (!validate(body)) {
-    res.status(403).send({ error: `Invalid user credentials` });
-    console.error("Bad request")
+  try {
+    if (!body.bookedBy || body.bookedBy.length < 3) {
+      throw new Error("bookedBy invalid or less than 3 characters")
+    }
+    if (!body.entity || body.entity.length < 3) {
+      throw new Error("entity invalid or less than 3 characters")
+    }
+    const starttime = dayjs(body.starttime)
+    if (!starttime.isValid() || starttime.isBefore(dayjs())) {
+      throw new Error("starttime invalid or in the past")
+    }
+    const endtime = dayjs(body.endtime)
+    if (!endtime.isValid() || endtime.isBefore(starttime)) {
+      throw new Error("endtime invalid or before starttime")
+    }
+  } catch (error) {
+    console.error(error)
+    res.status(StatusCodes.BAD_REQUEST).send(getValidationMsg(error));
     return
   }
   next();
