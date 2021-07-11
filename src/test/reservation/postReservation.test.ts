@@ -25,8 +25,6 @@ describe("Creating a new reservation", () => {
       .post(reservationUrl)
       .send(newReservation)
       .set("Cookie", "_token=test;")
-      .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
       .expect(StatusCodes.OK)
 
     expect(mockInsert).toBeCalledTimes(1)
