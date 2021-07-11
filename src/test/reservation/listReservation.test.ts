@@ -17,7 +17,7 @@ jest.mock("@db", () => ({
 }))
 
 describe("Listing available reservations", () => {
-  it("Should return the list", async () => {
+  it.skip("Should return the list", async () => {
     const starttime = dayjs("2021-06-06").toJSON()
     const endtime = dayjs("2021-06-07").toJSON()
     const entity = "3D-skrivare"
