@@ -5,14 +5,10 @@
     "strict": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "@src/*": [
-        "./*"
-      ],
-      "@db": [
-        "./storage/db.ts"
-      ]
+      "@src/*": ["src/*"],
+      "@db": ["src/storage/db.ts"]
     },
     "esModuleInterop": true,
     "experimentalDecorators": true,
