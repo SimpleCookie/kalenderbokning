@@ -32,4 +32,4 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Run tests with coverage
-        run: yarn test-coverage
+        run: yarn test-coverage --maxWorkers=2
