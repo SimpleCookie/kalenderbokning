@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: '16'
 
-      - name: yarn install
-        run: yarn install
-      - name: yarn test
-        run: yarn test
+      - name: Install dependencies
+        run: yarn
+      - name: Run tests with coverage
+        run: yarn test-coverage
