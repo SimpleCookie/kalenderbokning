@@ -5,13 +5,13 @@
     "strict": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "baseUrl": "./",
+    "baseUrl": "src",
     "paths": {
       "@src/*": [
-        "src/*"
+        "./*"
       ],
       "@db": [
-        "src/storage/db.ts"
+        "./storage/db.ts"
       ]
     },
     "esModuleInterop": true,
