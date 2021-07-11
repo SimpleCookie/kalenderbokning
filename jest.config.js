@@ -5,9 +5,6 @@ module.exports = {
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
   moduleNameMapper: {
     "@db": "<rootDir>/src/storage/db.ts",
-    "@src/(.*)": [
-      "<rootDir>/src/$1"
-    ]
+    "@src/(.*)": "<rootDir>/src/$1",
   },
-  moduleDirectories: ["node_modules", "src"],
 };
