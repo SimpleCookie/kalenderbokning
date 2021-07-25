@@ -3,7 +3,7 @@ import { endpoint } from "@src/endpoint";
 import dayjs from "dayjs";
 import { StatusCodes } from "http-status-codes";
 import supertest from "supertest";
-import { reservationBuilder } from "../builders/reservationBuilder";
+import { reservationBuilder } from "../builders/reservation.builder";
 
 const reservationUrl = `/api${endpoint.reservations}`
 const mockInsert = jest.fn()

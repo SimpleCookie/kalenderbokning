@@ -1,8 +1,8 @@
-import { NewReservation, Reservation } from "@src/reservations/interface/ReservationInterface";
-import { NewReservationDto as NewReservationDto, ReservationDto } from "@src/reservations/interface/ReservationInterfaceDto";
+import { NewReservation, Reservation } from "./interface/reservation.interface";
+import { NewReservationDto, ReservationDto } from "./interface/reservation.interface.dto";
 
-export const newReservationMapper = {
-  toDto: (reservation: Reservation): ReservationDto => {
+export const reservationMapper = {
+  toReservationDto: (reservation: Reservation): ReservationDto => {
     try {
       return ({
         type: "reservation",
@@ -17,7 +17,7 @@ export const newReservationMapper = {
       throw error
     }
   },
-  fromCreationDto: (reservation: NewReservationDto): NewReservation => {
+  toNewReservation: (reservation: NewReservationDto): NewReservation => {
     try {
       const {
         entity,
@@ -40,5 +40,5 @@ export const newReservationMapper = {
       console.error(error)
       throw error
     }
-  }
+  },
 }

@@ -1,6 +1,6 @@
-import { NewReservation } from "@src/reservations/interface/ReservationInterface";
-import { reservationService } from "@src/reservations/service/reservationService";
+import { NewReservation } from "@src/reservations/interface/reservation.interface";
 import dayjs from "dayjs";
+import { newReservationService } from "../newReservation.service";
 
 const mockInsert = jest.fn()
 jest.mock("@db", () => ({
@@ -21,7 +21,7 @@ describe("Creating a new reservation should", () => {
       endtime: dayjs("2021-06-06").toISOString(),
     }
 
-    const reservation = await reservationService.create(reservationDto)
+    const reservation = await newReservationService.create(reservationDto)
 
     const expected = {
       type: "reservation",

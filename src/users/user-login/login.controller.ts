@@ -1,20 +1,20 @@
 import { endpoint } from "@src/endpoint";
-import { UserService } from "@src/users/service/UserService";
-import { validateLogin } from "@src/users/validator/validateLogin";
 import { Request, Response, Router } from "express";
 import {
     ReasonPhrases,
     StatusCodes
 } from 'http-status-codes';
-import { userMapper } from "./userMapper";
+import { userMapper } from "../user.mapper";
+import { loginService } from "./login.service";
+import { validateLogin } from "./login.validator";
 
-export const LoginController = (router: Router) => {
+export const loginController = (router: Router) => {
 
     router.post(endpoint.login,
         validateLogin,
         async ({ body }: Request, res: Response): Promise<Response> => {
             try {
-                const user = UserService.login(body)
+                const user = loginService.login(body)
                 if (!user) {
                     return res.status(StatusCodes.FORBIDDEN).send(ReasonPhrases.FORBIDDEN)
                 }
