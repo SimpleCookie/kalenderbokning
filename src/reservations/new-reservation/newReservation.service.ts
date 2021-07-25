@@ -1,12 +1,9 @@
+import { collectionNames } from "@src/collectionNames";
 import { NewReservation, Reservation } from "@src/reservations/interface/ReservationInterface";
 import { getDatabase } from "@src/storage/db";
 import { v4 as uuidv4 } from "uuid";
 
-interface ReservationFilter {
-  timestamp?: string
-}
-const collection = "kb_reservations"
-export const reservationService = {
+export const newReservationService = {
 
   create: async (creation: NewReservation): Promise<Reservation> => {
     try {
@@ -14,7 +11,7 @@ export const reservationService = {
       if (!db) {
         throw new Error("Unable to connect to database")
       }
-      const reservations = db.collection(collection)
+      const reservations = db.collection(collectionNames.reservation)
       const newReservation: Reservation = {
         _id: uuidv4(),
         type: "reservation",
@@ -29,22 +26,5 @@ export const reservationService = {
       console.error(error)
       throw error
     }
-  },
-
-  update: (reservation: Reservation): Reservation | undefined => {
-    throw new Error("Method not implemented.")
-  },
-
-  getById: (id: string): Reservation | undefined => {
-    throw new Error("Method not implemented.")
-  },
-
-  list: (filters: ReservationFilter): Reservation[] => {
-    console.log(filters)
-    throw new Error("Method not implemented.")
-  },
-
-  listByUserId: (userId: string): Reservation[] => {
-    throw new Error("Method not implemented.")
   },
 }

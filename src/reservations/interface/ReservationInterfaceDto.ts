@@ -13,3 +13,8 @@ export interface ReservationDto {
   starttime: string
   endtime: string
 }
+
+export interface ListReservationFilterDto {
+  type: "list_reservation_timestamp"
+  timestamp: string
+}

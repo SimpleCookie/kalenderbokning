@@ -1,10 +1,10 @@
 import { app } from "@src/app";
 import { endpoint } from "@src/endpoint";
-import { newReservationMapper } from "@src/reservations/controllers/NewReservation/newReservationMapper";
+import { reservationMapper } from "@src/reservations/reservation.mapper";
 import dayjs from "dayjs";
 import { StatusCodes } from "http-status-codes";
 import supertest from "supertest";
-import { reservationBuilder } from "../builders/reservationBuilder";
+import { reservationBuilder } from "../builders/reservation.builder";
 
 const reservationUrl = `/api${endpoint.reservations}`
 const mockFind = jest.fn()
@@ -46,8 +46,8 @@ describe("Listing available reservations", () => {
 
     expect(mockFind).toBeCalledTimes(1)
     expect(res.body).toStrictEqual([
-      newReservationMapper.toDto(reservation1),
-      newReservationMapper.toDto(reservation2),
+      reservationMapper.toReservationDto(reservation1),
+      reservationMapper.toReservationDto(reservation2),
     ])
   })
 })

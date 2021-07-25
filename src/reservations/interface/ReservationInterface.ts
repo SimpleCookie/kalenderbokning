@@ -13,3 +13,8 @@ export interface NewReservation {
   starttime: string
   endtime: string
 }
+
+export interface ListReservationFilter {
+  type: "list_reservation_timestamp"
+  timestamp: string
+}
