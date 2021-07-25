@@ -1,4 +1,4 @@
-import { NewReservation } from "@src/reservations/interface/ReservationInterface";
+import { NewReservation } from "@src/reservations/interface/reservation.interface";
 import dayjs from "dayjs";
 import { newReservationService } from "../newReservation.service";
 

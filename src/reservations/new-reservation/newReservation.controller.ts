@@ -1,5 +1,5 @@
 import { endpoint } from "@src/endpoint";
-import { validateIsAuthenticated } from "@src/users/validator/validateIsAuthenticated";
+import { validateIsAuthenticated } from "@src/users/validator/isAuthenticated.validator";
 import { Request, Response, Router } from "express";
 import {
     ReasonPhrases,

@@ -1,6 +1,6 @@
 import { Router } from "express"
-import { LoginController } from "./controller/LoginController"
+import { loginController } from "./user-login/login.controller"
 
 export const useUserControllers = (router: Router) => {
-  LoginController(router)
+  loginController(router)
 }

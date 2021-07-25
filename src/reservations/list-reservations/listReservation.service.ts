@@ -1,5 +1,5 @@
 import { collectionNames } from "@src/collectionNames";
-import { ListReservationFilter, Reservation } from "@src/reservations/interface/ReservationInterface";
+import { ListReservationFilter, Reservation } from "@src/reservations/interface/reservation.interface";
 import { getDatabase } from "@src/storage/db";
 
 export const listReservationService = {

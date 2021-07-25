@@ -1,11 +1,11 @@
 import { endpoint } from "@src/endpoint";
-import { validateIsAuthenticated } from "@src/users/validator/validateIsAuthenticated";
+import { validateIsAuthenticated } from "@src/users/validator/isAuthenticated.validator";
 import { Request, Response, Router } from "express";
 import {
     ReasonPhrases,
     StatusCodes
 } from 'http-status-codes';
-import { ListReservationFilter } from "../interface/ReservationInterface";
+import { ListReservationFilter } from "../interface/reservation.interface";
 import { reservationMapper } from "../reservation.mapper";
 import { listReservationService } from "./listReservation.service";
 import { validateReservationFilter } from "./reservationFilter.validator";

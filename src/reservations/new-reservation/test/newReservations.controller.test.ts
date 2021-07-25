@@ -1,6 +1,6 @@
 import { app } from "@src/app"
 import { endpoint } from "@src/endpoint"
-import { Reservation } from "@src/reservations/interface/ReservationInterface"
+import { Reservation } from "@src/reservations/interface/reservation.interface"
 import { reservationBuilder } from "@src/test/builders/reservation.builder"
 import dayjs from "dayjs"
 import { StatusCodes } from "http-status-codes"

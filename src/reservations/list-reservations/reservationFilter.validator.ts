@@ -2,7 +2,7 @@ import { getValidationMsg } from "@src/controllerUtilities"
 import dayjs from "dayjs"
 import { NextFunction, Request, Response } from "express"
 import { StatusCodes } from "http-status-codes"
-import { ListReservationFilter } from "../interface/ReservationInterface"
+import { ListReservationFilter } from "../interface/reservation.interface"
 
 export const validateReservationFilter = (request: Request, res: Response, next: NextFunction) => {
   const body: ListReservationFilter = request.body

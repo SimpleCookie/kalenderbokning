@@ -1,5 +1,5 @@
 import { collectionNames } from "@src/collectionNames";
-import { NewReservation, Reservation } from "@src/reservations/interface/ReservationInterface";
+import { NewReservation, Reservation } from "@src/reservations/interface/reservation.interface";
 import { getDatabase } from "@src/storage/db";
 import { v4 as uuidv4 } from "uuid";
 
