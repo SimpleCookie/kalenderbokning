@@ -5,19 +5,20 @@ import {
     ReasonPhrases,
     StatusCodes
 } from 'http-status-codes';
+import { ListReservationFilter } from "../interface/ReservationInterface";
 import { reservationMapper } from "../reservation.mapper";
 import { listReservationService } from "./listReservation.service";
 import { validateReservationFilter } from "./reservationFilter.validator";
 
 export const listReservationController = (router: Router) => {
 
-    router.post(endpoint.reservations,
+    router.get(endpoint.reservations,
         validateIsAuthenticated,
         validateReservationFilter,
-        async ({ body }: Request, res: Response): Promise<Response> => {
+        async (request: Request, res: Response): Promise<Response> => {
             try {
-                const request = reservationMapper.toFilter(body)
-                const reservations = await listReservationService.list(request)
+                const filter = request.query as unknown as ListReservationFilter
+                const reservations = await listReservationService.list(filter)
                 const reservationDtos = reservations.map(reservationMapper.toReservationDto)
                 return res.status(StatusCodes.OK).send(reservationDtos)
             } catch (error) {

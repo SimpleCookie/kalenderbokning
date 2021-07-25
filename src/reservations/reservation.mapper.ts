@@ -1,5 +1,5 @@
-import { ListReservationFilter, NewReservation, Reservation } from "./interface/ReservationInterface";
-import { ListReservationFilterDto, NewReservationDto, ReservationDto } from "./interface/ReservationInterfaceDto";
+import { NewReservation, Reservation } from "./interface/ReservationInterface";
+import { NewReservationDto, ReservationDto } from "./interface/ReservationInterfaceDto";
 
 export const reservationMapper = {
   toReservationDto: (reservation: Reservation): ReservationDto => {
@@ -41,15 +41,4 @@ export const reservationMapper = {
       throw error
     }
   },
-  toFilter: (filterDto: ListReservationFilterDto): ListReservationFilter => {
-    try {
-      return ({
-        type: "list_reservation_timestamp",
-        timestamp: filterDto.timestamp,
-      });
-    } catch (error) {
-      console.error("Fail to map reservation-filter from dto", filterDto)
-      throw error
-    }
-  }
 }

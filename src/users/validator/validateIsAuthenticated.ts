@@ -11,4 +11,3 @@ export const validateIsAuthenticated = (req: Request, res: Response, next: NextF
   }
   next();
 }
-

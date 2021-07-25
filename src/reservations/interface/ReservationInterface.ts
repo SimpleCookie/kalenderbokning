@@ -15,6 +15,5 @@ export interface NewReservation {
 }
 
 export interface ListReservationFilter {
-  type: "list_reservation_timestamp"
   timestamp: string
 }
