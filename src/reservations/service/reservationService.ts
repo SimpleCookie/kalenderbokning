@@ -3,7 +3,7 @@ import { getDatabase } from "@src/storage/db";
 import { v4 as uuidv4 } from "uuid";
 
 interface ReservationFilter {
-  date?: string
+  timestamp?: string
 }
 const collection = "kb_reservations"
 export const reservationService = {
