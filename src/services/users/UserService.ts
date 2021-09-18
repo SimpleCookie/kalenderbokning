@@ -1,4 +1,4 @@
-import { User, UserCrendentials } from "@src/users/interface/UserInterface"
+import { User, UserCrendentials } from "@src/interfaces/users/UserInterface"
 
 export class UserService {
 

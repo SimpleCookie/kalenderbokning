@@ -1,14 +1,14 @@
 import { app } from "@src/app"
 import { endpoint } from "@src/endpoint"
-import { Reservation } from "@src/reservations/interface/ReservationInterface"
-import { reservationService } from "@src/reservations/service/reservationService"
-import { reservationBuilder } from "@src/test/builders/reservationBuilder"
+import { Reservation } from "@src/interfaces/reservations/ReservationInterface"
+import { reservationService } from "@src/services/reservations/reservationService"
+import { reservationBuilder } from "@src/testRequests/builders/reservationBuilder"
 import dayjs from "dayjs"
 import { StatusCodes } from "http-status-codes"
 import supertest from "supertest"
 import { v4 as uuidv4 } from "uuid"
 
-jest.mock("@src/reservations/service/reservationService")
+jest.mock("@src/services/reservations/reservationService")
 const mockReservationService = reservationService.create as jest.Mock
 
 const testUrl = `/api${endpoint.reservations}`

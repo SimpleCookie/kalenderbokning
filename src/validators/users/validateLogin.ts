@@ -1,5 +1,5 @@
 import { emailRegExp, getValidationMsg } from "@src/controllerUtilities"
-import { LoginRequestDto } from "@src/users/interface/UserInterfaceDto"
+import { LoginRequestDto } from "@src/interfaces/users/UserInterfaceDto"
 import { NextFunction, Request, Response } from "express"
 import { ReasonPhrases, StatusCodes } from "http-status-codes"
 
@@ -19,4 +19,3 @@ export const validateLogin = (request: Request, res: Response, next: NextFunctio
   }
   next();
 }
-

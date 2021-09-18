@@ -1,7 +1,7 @@
+import { useReservationControllers } from "@src/controllers/reservations"
+import { useUserControllers } from "@src/controllers/users"
+import { endpoint } from "@src/endpoint"
 import { Request, Response, Router } from "express"
-import { endpoint } from "./endpoint"
-import { useReservationControllers } from "./reservations"
-import { useUserControllers } from "./users"
 
 export const router = Router()
 
@@ -13,4 +13,3 @@ router.get(endpoint.ping, async (_req: Request, res: Response): Promise<Response
 
 useUserControllers(router)
 useReservationControllers(router)
-
