@@ -1,9 +1,9 @@
 import { app } from "@src/app";
 import { endpoint } from "@src/endpoint";
+import { reservationBuilder } from "@src/test/builders/reservationBuilder";
 import dayjs from "dayjs";
 import { StatusCodes } from "http-status-codes";
 import supertest from "supertest";
-import { reservationBuilder } from "../builders/reservationBuilder";
 
 const reservationUrl = `/api${endpoint.reservations}`
 const mockInsert = jest.fn()

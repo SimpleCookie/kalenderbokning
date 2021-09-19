@@ -1,4 +1,4 @@
-import { NewReservation, Reservation } from "@src/reservations/interface/ReservationInterface";
+import { NewReservation, Reservation } from "@src/interfaces/reservations/ReservationInterface";
 import { getDatabase } from "@src/storage/db";
 import { v4 as uuidv4 } from "uuid";
 

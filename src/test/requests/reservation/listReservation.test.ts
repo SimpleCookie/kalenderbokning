@@ -1,10 +1,10 @@
 import { app } from "@src/app";
+import { newReservationMapper } from "@src/controllers/reservations/NewReservation/newReservationMapper";
 import { endpoint } from "@src/endpoint";
-import { newReservationMapper } from "@src/reservations/controllers/NewReservation/newReservationMapper";
+import { reservationBuilder } from "@src/test/builders/reservationBuilder";
 import dayjs from "dayjs";
 import { StatusCodes } from "http-status-codes";
 import supertest from "supertest";
-import { reservationBuilder } from "../builders/reservationBuilder";
 
 const reservationUrl = `/api${endpoint.reservations}`
 const mockFind = jest.fn()

@@ -1,5 +1,5 @@
-import { NewReservation } from "@src/reservations/interface/ReservationInterface";
-import { reservationService } from "@src/reservations/service/reservationService";
+import { NewReservation } from "@src/interfaces/reservations/ReservationInterface";
+import { reservationService } from "@src/services/reservations/reservationService";
 import dayjs from "dayjs";
 
 const mockInsert = jest.fn()

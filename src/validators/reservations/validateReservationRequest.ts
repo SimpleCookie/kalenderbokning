@@ -1,5 +1,5 @@
 import { getValidationMsg } from "@src/controllerUtilities"
-import { NewReservationDto } from "@src/reservations/interface/ReservationInterfaceDto"
+import { NewReservationDto } from "@src/interfaces/reservations/ReservationInterfaceDto"
 import dayjs from "dayjs"
 import { NextFunction, Request, Response } from "express"
 import { StatusCodes } from "http-status-codes"
@@ -29,4 +29,3 @@ export const validateNewReservation = (request: Request, res: Response, next: Ne
   }
   next();
 }
-
