@@ -1,6 +1,6 @@
 import { app } from "@src/app";
 import { endpoint } from "@src/endpoint";
-import { reservationBuilder } from "@src/testRequests/builders/reservationBuilder";
+import { reservationBuilder } from "@src/test/builders/reservationBuilder";
 import dayjs from "dayjs";
 import { StatusCodes } from "http-status-codes";
 import supertest from "supertest";
